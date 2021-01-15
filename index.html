@@ -17,23 +17,19 @@
     <main class="container">
         <section class="my-5">
             <header>
-                <h2>1. Reducing number of color levels in an image</h2>
+                <h2>Transform an image \( f:X\times Y \to \{a,\dots, b\} \) to \( g:X\times Y \to \{c,\dots, d\} \)</h2>
+                <hr>
             </header>
             <main>
                 <div class="mb-4">
-                    <h4>Problem</h4>
-                    <p>Transform an image \( f:X\times Y \to \{a,\dots, b\} \) to \( g:X\times Y \to \{c,\dots, d\} \)
-                    </p>
-                </div>
-                <div class="mb-4">
                     <h4>Algorithm</h4>
-                    <ol>
-                        <li>\( min = Min\{f(x,y) | 0 \leq x \leq m-1, 0 \leq y \leq n-1 \}\)</li>
-                        <li>\( g(x,y) = f(x, y) - min \)</li>
-                        <li>\(max = Max\{g(x,y) | 0 \leq x \leq m-1, 0 \leq y \leq n-1 \}\)</li>
-                        <li>\( g(x,y) = \dfrac{g(x, y)}{max} \)</li>
-                        <li>\( g(x,y) = (d-c)\cdot g(x,y) \)</li>
-                        <li>\( g(x,y) = g(x,y) + c \)</li>
+                    <ol class="list-unstyled fw-bold">
+                        <li>Step 1: \( min = Min\{f(x,y) | 0 \leq x \leq m-1, 0 \leq y \leq n-1 \} \)</li>
+                        <li>Step 2: \( g(x,y) = f(x, y) - min \)</li>
+                        <li>Step 3: \( max = Max\{g(x,y) | 0 \leq x \leq m-1, 0 \leq y \leq n-1 \} \)</li>
+                        <li>Step 4: \( g(x,y) = \dfrac{g(x, y)}{max} \)</li>
+                        <li>Step 5: \( g(x,y) = (d-c)\cdot g(x,y) \)</li>
+                        <li>Step 6: \( g(x,y) = g(x,y) + c \)</li>
                     </ol>
                 </div>
                 <div class="row">
@@ -65,9 +61,9 @@
                     <label class="input-group-text" for="customImage">Upload</label>
                 </div>
                 <div class="input-group my-3">
-                    <span class="input-group-text">Minimum</span>
+                    <span class="input-group-text">Minimum \( (c) \)</span>
                     <input type="number" id="min" class="form-control" min="0" max="255" value="20" placeholder="0">
-                    <span class="input-group-text">Maximum</span>
+                    <span class="input-group-text">Maximum \( (d) \)</span>
                     <input type="number" id="max" class="form-control" min="0" max="255" value="70" placeholder="50">
                 </div>
             </footer>
