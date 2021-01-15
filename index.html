@@ -60,6 +60,10 @@
             </main>
             <footer>
                 <p>Enter min and max pixel values in processed image \( (min \geq 0 \) and \( max \leq 255)\)</p>
+                <div class="input-group mb-3">
+                    <input type="file" class="form-control" id="customImage">
+                    <label class="input-group-text" for="customImage">Upload</label>
+                </div>
                 <div class="input-group my-3">
                     <span class="input-group-text">Minimum</span>
                     <input type="number" id="min" class="form-control" min="0" max="255" value="20" placeholder="0">

@@ -12,7 +12,28 @@
     const image = new Image();
     image.src = "https://picsum.photos/800/450";
     image.crossOrigin = "Anonymous";
-    image.onload = function () {
+    image.onload = () => init(image);
+
+    document.querySelector("#customImage").addEventListener("change", function (e) {
+        const reader = new FileReader();
+        const file = this.files[0];
+        const img = new Image();
+        reader.readAsDataURL(file);
+        reader.onload = function () {
+            img.src = reader.result;
+            img.onload = () => init(img);
+        }
+    });
+
+    min.addEventListener("input", function () {
+        processedImgCtx.putImageData(reduceColorLevels(greyScale(imgData), Number(min.value), Number(max.value)), 0, 0);
+    });
+
+    max.addEventListener("input", function () {
+        processedImgCtx.putImageData(reduceColorLevels(greyScale(imgData), Number(min.value), Number(max.value)), 0, 0);
+    });
+
+    function init(image) {
         baseImg.width = image.naturalWidth;
         processedImg.width = image.naturalWidth;
         baseImg.height = image.naturalHeight;
@@ -25,13 +46,6 @@
         processedImgCtx.putImageData(reduceColorLevels(greyScale(imgData), Number(min.value), Number(max.value)), 0, 0);
     }
 
-    min.addEventListener("input", function () {
-        processedImgCtx.putImageData(reduceColorLevels(greyScale(imgData), Number(min.value), Number(max.value)), 0, 0);
-    });
-    max.addEventListener("input", function () {
-        processedImgCtx.putImageData(reduceColorLevels(greyScale(imgData), Number(min.value), Number(max.value)), 0, 0);
-    });
-
     function reduceColorLevels(imgData, start, end) {
         const min = minColor(imgData);
         const max = maxColor(imgData);
@@ -41,7 +55,7 @@
                 else acc.push(Math.floor((end - start) * (color - min) / (max - min) + start))
                 return acc;
             }, [])),
-            image.naturalWidth, image.naturalHeight);
+            imgData.width, imgData.height);
         return reducedImg;
     }
 
