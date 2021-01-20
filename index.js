@@ -9,10 +9,7 @@
     const max = document.querySelector("#max");
     var imgData;
 
-    const image = new Image();
-    image.src = "https://picsum.photos/800/450";
-    image.crossOrigin = "Anonymous";
-    image.onload = () => init(image);
+    loadImageFromURL();
 
     document.querySelector("#customImage").addEventListener("change", function (e) {
         const reader = new FileReader();
@@ -23,6 +20,12 @@
             img.src = reader.result;
             img.onload = () => init(img);
         }
+        document.querySelector("#URLImage").value = "";
+    });
+
+    document.querySelector("#URLImage").addEventListener("input", function (e) {
+        loadImageFromURL(this.value);
+        document.querySelector("#customImage").value = "";
     });
 
     min.addEventListener("input", function () {
@@ -32,6 +35,13 @@
     max.addEventListener("input", function () {
         processedImgCtx.putImageData(reduceColorLevels(greyScale(imgData), Number(min.value), Number(max.value)), 0, 0);
     });
+
+    function loadImageFromURL(url = "https://picsum.photos/800/450") {
+        const image = new Image();
+        image.src = url;
+        image.crossOrigin = "Anonymous";
+        image.onload = () => init(image);
+    }
 
     function init(image) {
         baseImg.width = image.naturalWidth;

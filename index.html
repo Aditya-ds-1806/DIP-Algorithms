@@ -14,8 +14,8 @@
     <header class="text-center my-5 py-5">
         <h1 class="display-4 fw-bolder">Implementation of DIP Algorithms in JS</h1>
     </header>
-    <main class="container">
-        <section class="my-5">
+    <main class="container pb-5 mb-5">
+        <section>
             <header>
                 <h2>Transform an image \( f:X\times Y \to \{a,\dots, b\} \) to \( g:X\times Y \to \{c,\dots, d\} \)</h2>
                 <hr>
@@ -60,6 +60,11 @@
                     <input type="file" class="form-control" accept="image/*" id="customImage">
                     <label class="input-group-text" for="customImage">Upload</label>
                 </div>
+                <p class="text-center fw-bold">OR</p>
+                <div class="input-group mb-3">
+                    <label class="input-group-text" for="URLImage">Paste Image URL</label>
+                    <input type="url" class="form-control" placeholder="https://picsum.photos/200/300" id="URLImage">
+                </div>
                 <div class="input-group my-3">
                     <span class="input-group-text">Minimum \( (c) \)</span>
                     <input type="number" id="min" class="form-control" min="0" max="255" value="20" placeholder="0">
@@ -69,6 +74,23 @@
             </footer>
         </section>
     </main>
+    <footer class="text-center alert-danger py-5">
+        <div class="py-3">
+            <p>
+                Made with ❤️ and
+                <a href="http://vanilla-js.com/" class="text-decoration-none">
+                    <img src="http://vanilla-js.com/assets/button.png">
+                </a>
+                in 🇮🇳
+            </p>
+            <a href="https://github.com/Aditya-ds-1806/DIP-Algorithms" class="text-reset text-decoration-none">
+                <img class="img-fluid" width="100"
+                    src="https://github.githubassets.com/images/modules/logos_page/GitHub-Logo.png" alt="GitHub">
+                <img class="img-fluid" width="50"
+                    src="https://github.githubassets.com/images/modules/logos_page/Octocat.png" alt="GitHub">
+            </a>
+        </div>
+    </footer>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="index.js"></script>
 </body>
